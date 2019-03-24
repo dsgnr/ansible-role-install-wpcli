@@ -1,0 +1,19 @@
+---
+language: python
+services: docker
+
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+
+before_script:
+  - cd ../
+  - mv ansible-role-install-wpcli install-wpcli
+  - cd install-wpcli
+
+install:
+  - pip install molecule docker
+
+script:
+  - molecule test
